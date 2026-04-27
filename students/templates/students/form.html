@@ -1,0 +1,66 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+
+                <h3 class="mb-4 text-center">➕ Add Student</h3>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        {{ form.name }}
+                        <div class="text-danger small">{{ form.name.errors }}</div>
+                    </div>
+
+                    <!-- Roll No -->
+                    <div class="mb-3">
+                        <label class="form-label">Roll No</label>
+                        {{ form.roll_no }}
+                        <div class="text-danger small">{{ form.roll_no.errors }}</div>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        {{ form.department }}
+                        <div class="text-danger small">{{ form.department.errors }}</div>
+                    </div>
+
+                    <!-- Year -->
+                    <div class="mb-3">
+                        <label class="form-label">Year</label>
+                        {{ form.year }}
+                        <div class="text-danger small">{{ form.year.errors }}</div>
+                    </div>
+
+                    <!-- GPA -->
+                    <div class="mb-3">
+                        <label class="form-label">GPA</label>
+                        {{ form.gpa }}
+                        <div class="text-danger small">{{ form.gpa.errors }}</div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-success btn-lg rounded-3">
+                            💾 Save Student
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

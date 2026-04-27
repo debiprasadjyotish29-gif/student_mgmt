@@ -1,0 +1,45 @@
+{% extends 'students/base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h3>📅 Attendance Records</h3>
+    <a href="{% url 'add_attendance' %}" class="btn btn-primary">+ Mark Attendance</a>
+</div>
+
+<div class="card-box">
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for a in records %}
+        <tr>
+            <td>{{ a.student.name }}</td>
+            <td>{{ a.date }}</td>
+            <td>
+                {% if a.status %}
+                    <span class="badge bg-success">Present</span>
+                {% else %}
+                    <span class="badge bg-danger">Absent</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">No records</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
